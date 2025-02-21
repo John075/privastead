@@ -529,7 +529,7 @@ fn main() -> io::Result<()> {
     #[cfg(target_arch = "aarch64")]
     let mut camera_list: Vec<RaspberryPiCamera> = Vec::new();
     #[cfg(target_arch = "aarch64")]
-    // test
+    // test 2
     let mut num_raspberry_pi = 0;
     if let Value::Sequence(cameras) = cameras_section {
         for camera in cameras {
