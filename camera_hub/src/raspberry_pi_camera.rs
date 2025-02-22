@@ -127,10 +127,11 @@ impl RaspberryPiCamera {
     ) -> Result<(), Error> {
         let _ = Command::new("sh")
         .arg("-c")
-        .arg("~/libcamera-apps/build/libcamera-vid -t 0 --width 1296 --height 972 --framerate 10 --inline --listen --codec h264 -o tcp://0.0.0.0:8888")
-        .stdout(Stdio::null())
-        .stderr(Stdio::null())
+        .arg("libcamera-vid -t 0 --width 1296 --height 972 --framerate 10 --inline \
+              --listen --codec h264 -o tcp://0.0.0.0:8888 \
+              > /home/john/libcamera.log 2>&1")
         .spawn()?;
+
         
         Self::stream_loop(frame_queue, ps_tx).await?;
         println!("Read frame thread exiting.");
